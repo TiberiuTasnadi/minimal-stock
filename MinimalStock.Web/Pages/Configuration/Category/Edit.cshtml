@@ -1,0 +1,13 @@
+﻿@page "/Configuration/Category/Edit/{Id:Guid}"
+@model MinimalStock.Web.Pages.Configuration.Category.EditModel
+@{
+}
+
+<h1>Edit Category</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <partial name="CategoryForm" model="@Model.Category" />
+    </div>
+</div>

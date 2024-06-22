@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\MinimalStock.Domain\MinimalStock.Domain.csproj" />
   </ItemGroup>
 
 </Project>

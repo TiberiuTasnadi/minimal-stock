@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MinimalStock.AplicationService\MinimalStock.ApplicationService.csproj" />
     <ProjectReference Include="..\MinimalStock.Persistance\MinimalStock.Persistance.csproj" />
   </ItemGroup>
 

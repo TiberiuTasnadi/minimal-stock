@@ -6,22 +6,19 @@
     <title>@ViewData["Title"] - WallapopScraper.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WallapopScraper.Web.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div class='dashboard'>
         <div class="dashboard-nav">
             <nav class="dashboard-nav-list">
-                <a class="dashboard-nav-item-selected" asp-page="/Index"><i class="material-icons">home</i></a>
-                <a class="dashboard-nav-item" asp-page="/ScraperConfiguration"><i class="material-icons">settings</i></a>
-                <a class="dashboard-nav-item" asp-page="/MailConfiguration"><i class="material-icons">settings</i></a>
-                <a class="dashboard-nav-item" asp-page="/Logs"><i class="material-icons">description</i></a>
+                <a id="index" class="dashboard-nav-item-selected" asp-page="/Index"><i class="material-icons">home</i></a>
+                <a id="configuration" class="dashboard-nav-item" asp-page="/Configuration/Index"><i class="material-icons">settings</i></a>
             </nav>
         </div>
         <div class='dashboard-app'>
             <div class='dashboard-content'>
-                <div class="container">
+                <div class="content">
                     <main role="main" class="pb-3">
                         @RenderBody()
                     </main>
@@ -37,24 +34,3 @@
     </div>
 </body>
 </html>
-<script>
-    const mobileScreen = window.matchMedia("(max-width: 990px )");
-    $(document).ready(function () {
-        $(".dashboard-nav-dropdown-toggle").click(function () {
-            $(this).closest(".dashboard-nav-dropdown")
-                .toggleClass("show")
-                .find(".dashboard-nav-dropdown")
-                .removeClass("show");
-            $(this).parent()
-                .siblings()
-                .removeClass("show");
-        });
-        $(".menu-toggle").click(function () {
-            if (mobileScreen.matches) {
-                $(".dashboard-nav").toggleClass("mobile-show");
-            } else {
-                $(".dashboard").toggleClass("dashboard-compact");
-            }
-        });
-    });
-</script>

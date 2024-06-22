@@ -1,0 +1,68 @@
+﻿@using MinimalStock.Domain.Enums
+@model MinimalStock.Web.Models.CategoryModel
+
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All"></div>
+    <div class="row">
+        <div class="col-sm-1">
+            <label asp-for="@Model.Name">Name:</label>
+        </div>
+        <div class="col-sm-6">
+            <input asp-for="@Model.Name" class="form-control" />
+            <span asp-validation-for="@Model.Name"></span>
+        </div>
+    </div>
+    <div class="row fields-title-section">
+        <div class="col-auto">
+            <h4 class="fields-title">Fields</h4>
+        </div>
+        <div class="col-sm-2 button-add-fields-section">
+            <button asp-page-handler="addField" class="btn btn-outline-primary">Add</button>
+        </div>
+    </div>
+    <hr />
+
+    <div id="fields-container">
+        @for (int i = 0; i < Model.Fields.Count; i++)
+        {
+            <input type="hidden" asp-for="Fields[i].Oid" />
+            <div class="row">
+                <div class="col-sm-1">
+                    <label asp-for="Fields[i].Name">Name:</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="Fields[i].Name" class="form-control" />
+                </div>
+            </div>
+            <div class="row type-section">
+                <div class="col-sm-1">
+                    <label asp-for="Fields[i].Type">Type:</label>
+                </div>
+                <div class="col-sm-6">
+                    <select asp-for="Fields[i].Type" class="form-control">
+                        <option value="@FieldType.String">String</option>
+                        <option value="@FieldType.Integer">Integer</option>
+                        <option value="@FieldType.Decimal">Decimal</option>
+                        <option value="@FieldType.DateTime">DateTime</option>
+                    </select>
+                </div>
+                <div class="col-sm-1">
+                    <button asp-page-handler="removeField" asp-route-fieldId="@Model.Fields[i].Oid" class="btn btn-outline-danger">Remove</button>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+    @if (ViewContext.RouteData.Values["id"] is not null)
+    {
+        <button asp-page-handler="edit" class="btn btn-success">Edit</button>
+        <button asp-page-handler="delete" class="btn btn-danger button-delete">Delete</button>
+    }
+    else
+    {
+        <button class="btn btn-success">Add</button>
+        <button asp-page-handler="cancel" class="btn btn-danger button-delete">Cancel</button>
+    }
+
+</form>

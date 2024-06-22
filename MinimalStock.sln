@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Domain", "3.Domain", "{8C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Infrastructure", "4.Infrastructure", "{4D43D12B-E1E7-4659-8F87-DB31DA1F50AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalStock.Persistance", "MinimalStock.Persistance\MinimalStock.Persistance.csproj", "{FDE2B984-E249-43D5-9B34-6706DE10A4FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalStock.Persistance", "MinimalStock.Persistance\MinimalStock.Persistance.csproj", "{FDE2B984-E249-43D5-9B34-6706DE10A4FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalStock.Domain", "MinimalStock.Domain\MinimalStock.Domain.csproj", "{3CA7AEA6-8E4B-4668-A7B3-D575033F2299}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalStock.Domain", "MinimalStock.Domain\MinimalStock.Domain.csproj", "{3CA7AEA6-8E4B-4668-A7B3-D575033F2299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalStock.AplicationService", "MinimalStock.AplicationService\MinimalStock.AplicationService.csproj", "{35545D75-EDEE-4699-A7DE-B3D32C61BF63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalStock.ApplicationService", "MinimalStock.AplicationService\MinimalStock.ApplicationService.csproj", "{35545D75-EDEE-4699-A7DE-B3D32C61BF63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

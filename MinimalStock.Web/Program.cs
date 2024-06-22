@@ -1,3 +1,6 @@
+using MinimalStock.ApplicationService.Services;
+using MinimalStock.ApplicationService.Services.Contracts;
+
 namespace MinimalStock.Web
 {
     public class Program
@@ -8,6 +11,8 @@ namespace MinimalStock.Web
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddTransient<ICategoryApplicationService, CategoryApplicationService>();
+            builder.Services.AddTransient<IFieldApplicationService, FieldApplicationService>();
 
             var app = builder.Build();
 
