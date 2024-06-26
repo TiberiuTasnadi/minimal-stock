@@ -11,22 +11,22 @@ namespace MinimalStock.Web.Pages.Configuration.Category
         public Guid Id { get; set; }
 
         [BindProperty]
-        public CategoryModel Category { get; set; }
+        public CategoryViewModel Category { get; set; }
 
         public void OnGet()
         {
-            Category = new CategoryModel
+            Category = new CategoryViewModel
             {
                 Name = "Vinilos",
-                Fields = new List<FieldModel>
+                Fields = new List<FieldViewModel>
                 {
-                    new FieldModel
+                    new FieldViewModel
                     {
                         Oid = Guid.NewGuid(),
                         Name = "Artista",
                         Type = FieldType.String,
                     },
-                    new FieldModel
+                    new FieldViewModel
                     {
                         Oid = Guid.NewGuid(),
                         Name = "Quantitat",
@@ -38,12 +38,22 @@ namespace MinimalStock.Web.Pages.Configuration.Category
 
         public async Task<IActionResult> OnPostEdit()
         {
-            return Page();
+            return RedirectToPage("/Configuration/Index");
+        }
+
+        public async Task<IActionResult> OnPostDelete()
+        {
+            return RedirectToPage("/Configuration/Index");
+        }
+
+        public async Task<IActionResult> OnPostCancel()
+        {
+            return RedirectToPage("/Configuration/Index");
         }
 
         public async Task<IActionResult> OnPostAddField()
         {
-            Category.Fields.Add(new FieldModel()
+            Category.Fields.Add(new FieldViewModel()
             {
                 Oid = Guid.NewGuid(),
             });
@@ -59,6 +69,7 @@ namespace MinimalStock.Web.Pages.Configuration.Category
                 Category.Fields.Remove(field);
             }
 
+            ModelState.Clear();
             return Page();
         }
     }

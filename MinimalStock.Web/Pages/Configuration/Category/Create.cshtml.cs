@@ -7,15 +7,15 @@ namespace MinimalStock.Web.Pages.Configuration.Category
     public class CreateModel : PageModel
     {
         [BindProperty]
-        public CategoryModel Category { get; set; }
+        public CategoryViewModel Category { get; set; }
 
         public void OnGet()
         {
-            Category = new CategoryModel();
-            Category.Fields.Add(new FieldModel());
+            Category = new CategoryViewModel();
+            Category.Fields.Add(new FieldViewModel());
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostCreate()
         {
             if (!ModelState.IsValid) 
             {
@@ -27,7 +27,7 @@ namespace MinimalStock.Web.Pages.Configuration.Category
 
         public async Task<IActionResult> OnPostAddField()
         {
-            Category.Fields.Add(new FieldModel());
+            Category.Fields.Add(new FieldViewModel());
             return Page();
         }
 

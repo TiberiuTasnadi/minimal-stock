@@ -3,17 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WallapopScraper.Web</title>
+    <title>@ViewData["Title"] - StockLite</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+@{
+    var currentPath = ViewContext.HttpContext.Request.Path;
+}
 <body>
     <div class='dashboard'>
         <div class="dashboard-nav">
             <nav class="dashboard-nav-list">
-                <a id="index" class="dashboard-nav-item-selected" asp-page="/Index"><i class="material-icons">home</i></a>
-                <a id="configuration" class="dashboard-nav-item" asp-page="/Configuration/Index"><i class="material-icons">settings</i></a>
+                <a class="@(currentPath == "/Item" ? "dashboard-nav-item-selected" : "dashboard-nav-item")" asp-page="/Item/Index">
+                    <i class="material-icons">playlist_add</i>
+                </a>
+                <a class="@(currentPath == "/Configuration" ? "dashboard-nav-item-selected" : "dashboard-nav-item")" asp-page="/Configuration/Index">
+                    <i class="material-icons">settings</i>
+                </a>
             </nav>
         </div>
         <div class='dashboard-app'>

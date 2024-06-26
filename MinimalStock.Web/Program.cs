@@ -31,6 +31,12 @@ namespace MinimalStock.Web
 
             app.UseAuthorization();
 
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/Item");
+                return Task.CompletedTask;
+            });
+
             app.MapRazorPages();
 
             app.Run();

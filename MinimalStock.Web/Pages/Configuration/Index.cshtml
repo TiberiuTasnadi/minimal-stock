@@ -1,35 +1,38 @@
 ﻿@page
 @model MinimalStock.Web.Pages.Configuration.IndexModel
 @{
+    ViewData["Title"] = "Configuration";
 }
-
-<div class="configuration-group">
-    <div class="row">
-        <div class="col-auto">
-            <h2>Categories</h2>
+<form method="post">
+    <div class="configuration-group">
+        <div class="row">
+            <div class="col-auto">
+                <h2>Categories</h2>
+            </div>
+            <div class="col-sm-2">
+                <a asp-page="./Category/Create" class="btn btn-outline-success">New</a>
+            </div>
         </div>
-        <div class="col-sm-2">
-            <a asp-page="./Category/Create" class="btn btn-outline-success">Add</a>
-        </div>
-    </div>
-    <hr />
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Configuration.Categories)
-            {
+        <hr />
+        <table class="table table-striped table-bordered">
+            <thead>
                 <tr>
-                    <td>@item.Name</td>
-                    <td>
-                        <a class="edit-icon" asp-page="./Category/Edit" asp-route-id="@item.Oid"><i class="material-icons">edit</i></a>
-                    </td>
+                    <th>Name</th>
+                    <th class="action-column-header">Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Configuration.Categories)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td class="action-column">
+                            <a class="edit-icon-color action-link" asp-page="./Category/Edit" asp-route-id="@item.Oid"><i class="material-icons">edit</i></a>
+                            <button asp-page-handler="deleteCategory" asp-route-categoryId="@item.Oid" class="action-button delete-icon-color material-icons btn">delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</form>

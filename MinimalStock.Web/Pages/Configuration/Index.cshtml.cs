@@ -17,25 +17,25 @@ namespace MinimalStock.Web.Pages.Configuration
         }
 
         [BindProperty]
-        public Models.ConfigurationModel Configuration { get; set; }
+        public Models.ConfigurationViewModel Configuration { get; set; }
 
         public async void OnGet()
         {
-            var categories = new List<Models.CategoryModel>()
+            var categories = new List<Models.CategoryViewModel>()
             {
-                new Models.CategoryModel
+                new Models.CategoryViewModel
                 {
                     Oid = Guid.NewGuid(),
                     Name = "Vinilos",
-                    Fields = new List<Models.FieldModel>
+                    Fields = new List<Models.FieldViewModel>
                     {
-                        new Models.FieldModel
+                        new Models.FieldViewModel
                         {
                             Oid = Guid.NewGuid(),
                             Name = "Artista",
                             Type = Domain.Enums.FieldType.String,
                         },
-                        new Models.FieldModel
+                        new Models.FieldViewModel
                         {
                             Oid = Guid.NewGuid(),
                             Name = "Quantitat",
@@ -43,19 +43,19 @@ namespace MinimalStock.Web.Pages.Configuration
                         },
                     },
                 },
-                new Models.CategoryModel
+                new Models.CategoryViewModel
                 {
                     Oid = Guid.NewGuid(),
                     Name = "Llibres",
-                    Fields = new List<Models.FieldModel>
+                    Fields = new List<Models.FieldViewModel>
                     {
-                        new Models.FieldModel
+                        new Models.FieldViewModel
                         {
                             Oid = Guid.NewGuid(),
                             Name = "Autor",
                             Type = Domain.Enums.FieldType.String,
                         },
-                        new Models.FieldModel
+                        new Models.FieldViewModel
                         {
                             Oid = Guid.NewGuid(),
                             Name = "Pàgines",
@@ -65,10 +65,15 @@ namespace MinimalStock.Web.Pages.Configuration
                 },
             };
 
-            Configuration = new Models.ConfigurationModel
+            Configuration = new Models.ConfigurationViewModel
             {
                 Categories = categories,
             };
+        }
+
+        public IActionResult OnPostDeleteCategory(Guid categoryId)
+        {
+            return RedirectToPage("/Configuration/Index");
         }
     }
 }

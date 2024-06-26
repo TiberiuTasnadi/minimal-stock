@@ -1,5 +1,5 @@
 ﻿@using MinimalStock.Domain.Enums
-@model MinimalStock.Web.Models.CategoryModel
+@model MinimalStock.Web.Models.CategoryViewModel
 
 <form method="post" enctype="multipart/form-data">
     <div asp-validation-summary="All"></div>
@@ -25,21 +25,21 @@
     <div id="fields-container">
         @for (int i = 0; i < Model.Fields.Count; i++)
         {
-            <input type="hidden" asp-for="Fields[i].Oid" />
+            <input type="hidden" asp-for="@Model.Fields[i].Oid" />
             <div class="row">
                 <div class="col-sm-1">
-                    <label asp-for="Fields[i].Name">Name:</label>
+                    <label asp-for="@Model.Fields[i].Name">Name:</label>
                 </div>
                 <div class="col-sm-6">
-                    <input asp-for="Fields[i].Name" class="form-control" />
+                    <input asp-for="@Model.Fields[i].Name" class="form-control" />
                 </div>
             </div>
             <div class="row type-section">
                 <div class="col-sm-1">
-                    <label asp-for="Fields[i].Type">Type:</label>
+                    <label asp-for="@Model.Fields[i].Type">Type:</label>
                 </div>
                 <div class="col-sm-6">
-                    <select asp-for="Fields[i].Type" class="form-control">
+                    <select asp-for="@Model.Fields[i].Type" class="form-control">
                         <option value="@FieldType.String">String</option>
                         <option value="@FieldType.Integer">Integer</option>
                         <option value="@FieldType.Decimal">Decimal</option>
@@ -54,6 +54,7 @@
     </div>
 
     <hr />
+
     @if (ViewContext.RouteData.Values["id"] is not null)
     {
         <button asp-page-handler="edit" class="btn btn-success">Edit</button>
@@ -61,8 +62,9 @@
     }
     else
     {
-        <button class="btn btn-success">Add</button>
-        <button asp-page-handler="cancel" class="btn btn-danger button-delete">Cancel</button>
+        <button asp-page-handler="create" class="btn btn-success">Create</button>
     }
+    <button asp-page-handler="cancel" class="btn btn-outline-danger button-delete">Cancel</button>
+
 
 </form>
